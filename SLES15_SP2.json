@@ -34,7 +34,7 @@
     ],
     "post-processors": [
       {
-        "output": "{{ user `build_directory` }}/{{user `box_basename`}}.{{.Provider}}.box",
+        "output": "Output/Sless15_packer.box",
         "type": "vagrant"
       }
     ],
@@ -49,18 +49,8 @@
         "execute_command": "echo 'vagrant' | {{.Vars}} sudo -S -E sh '{{.Path}}'",
         "expect_disconnect": true,
         "scripts": [
-          "{{template_dir}}/../_common/motd.sh",
-          "{{template_dir}}/../_common/sshd.sh",
-          "{{template_dir}}/../_common/vagrant.sh",
-          "{{template_dir}}/scripts/unsupported-modules.sh",
-          "{{template_dir}}/../_common/virtualbox.sh",
-          "{{template_dir}}/../_common/vmware.sh",
-          "{{template_dir}}/../_common/parallels.sh",
-          "{{template_dir}}/scripts/sudoers.sh",
-          "{{template_dir}}/scripts/zypper-locks.sh",
-          "{{template_dir}}/scripts/remove-dvd-source.sh",
-          "{{template_dir}}/scripts/cleanup.sh",
-          "{{template_dir}}/../_common/minimize.sh"
+          "scripts/init.sh",
+          "scripts/cleanup-script.sh"
         ],
         "type": "shell"
       }
